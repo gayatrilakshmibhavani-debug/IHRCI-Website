@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IHRCI of INDIA - International Human Rights Commission of India</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nhrc-blue: #1565C0;
+            --nhrc-light-blue: #E3F2FD;
+            --nhrc-dark: #0D47A1;
+            --nhrc-accent: #FF8F00;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .top-header {
+            background-color: var(--nhrc-blue);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-header a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            height: 70px;
+            max-width: 100%;
+        }
+        
+        .right-logo {
+            height: 70px;
+            max-width: 100%;
+        }
+        
+        .org-name {
+            color: var(--nhrc-blue);
+            font-weight: 700;
+            font-size: 22px;
+            margin: 0;
+        }
+        
+        .org-tagline {
+            color: var(--nhrc-dark);
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .navbar {
+            background-color: var(--nhrc-dark);
+            padding: 0;
+        }
+        
+        .navbar .nav-link {
+            color: white !important;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar .nav-link:hover {
+            background-color: var(--nhrc-blue);
+        }
+        
+        .dropdown-menu {
+            background-color: var(--nhrc-dark);
+            border: none;
+            border-radius: 0;
+        }
+        
+        .dropdown-item {
+            color: white;
+            padding: 10px 20px;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--nhrc-blue);
+            color: white;
+        }
+        
+        .hero-slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin: 0;
+        }
+        
+        .slide {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .scroll-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 5px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            z-index: 5;
+        }
+        
+        .bg-orange { background-color: rgba(255, 165, 0, 0.85); }
+        .bg-green  { background-color: rgba(0, 128, 0, 0.85); }
+        .bg-red    { background-color: rgba(255, 0, 0, 0.85); }
+        
+        .scroll-text span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 15s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .slide-buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+        .arrow:hover {
+            background-color: rgba(0,0,0,0.7);
+        }
+        .arrow.left {
+            left: 10px;
+        }
+        .arrow.right {
+            right: 10px;
+        }
+        
+        .quick-links {
+            background-color: var(--nhrc-light-blue);
+            padding: 20px 0;
+        }
+        
+        .quick-link-item {
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s;
+            background: white;
+            border-radius: 8px;
+            margin: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .quick-link-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quick-link-icon {
+            font-size: 2.5rem;
+            color: var(--nhrc-blue);
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            color: var(--nhrc-dark);
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--nhrc-accent);
+            display: inline-block;
+        }
+        
+        .page-content {
+            display: none;
+            padding: 30px 0;
+            min-height: 500px;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        /* Fix for navbar dividers */
+        .navbar-nav .nav-item {
+            position: relative;
+        }
+
+        .navbar-nav .nav-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        /* Video dropdown styles */
+        .news-wrapper {
+            position: relative;
+        }
+
+        .video-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            min-width: 320px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        .video-option {
+            display: block;
+            color: #333;
+            font-weight: 500;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .video-option:hover {
+            background: #dc3545;
+            color: white;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo, .right-logo {
+                height: 50px;
+                margin: 5px 0;
+            }
+            
+            .org-name {
+                font-size: 1.3rem;
+            }
+            
+            .hero-slider {
+                height: 300px;
+            }
+            
+            .navbar-nav .nav-item:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        /* Gallery item fixes */
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .certificate-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #f39c12;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <a href="tel:+919441383889"><i class="fas fa-phone-alt me-1"></i> Helpline: +91-9441383889</a>
+                    <a href="mailto:ihrciofindia@gmail.com"><i class="fas fa-envelope me-1"></i> ihrciofindia@gmail.com</a>
+                </div>
+                <div>
+                    <a href="#"><i class="fas fa-search me-1"></i> Search</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-2.jpg" alt="IHRCI Logo" class="logo">
+                <div class="org-text">
+                    <h1 class="org-name">IHRCI of INDIA</h1>
+                    <p class="org-tagline">International Human Rights Commission of India - Protecting Dignity, Promoting Rights</p>
+                </div>
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/2-2.jpg" alt="IHRCI Secondary Logo" class="right-logo">
+                <div class="news-wrapper">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/logo-ihrci.png" alt="News Logo" class="news-logo" onclick="toggleVideoDropdown()" style="height: 70px; cursor: pointer;">
+                    <div id="videoDropdown" class="video-dropdown">
+                        <a href="https://www.youtube.com/watch?v=NRpbrwmagGM" target="_blank" class="video-option">Megha Medical Camp</a>
+                        <a href="https://www.youtube.com/watch?v=qjjQzf8ezBo" target="_blank" class="video-option">Independence Day Celebrations</a>
+                        <a href="https://www.youtube.com/watch?v=7OLvIhxhwic" target="_blank" class="video-option">Clay Vinayaka Idols Distribution</a>
+                        <a href="https://www.youtube.com/watch?v=VNc1uTNp2pE" target="_blank" class="video-option">Help for Fluoride Victims</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="home"><i class="fas fa-home me-1"></i> Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-page="about-intro">Introduction</a></li>
+                            <li><a class="dropdown-item" href="#" data-page="about-functions">Functions & Powers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="complaint">Complaint</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="contact-us">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page-content active">
+        <!-- Hero Slider -->
+        <div class="hero-slider">
+            <div class="slide active">
+                <div class="scroll-text bg-orange">
+                    <span>Protecting Human Rights in India - Ensuring dignity, equality, and justice for all citizens</span>
+                </div>
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/4-4.jpg" alt="Protecting Human Rights">
+                <div class="slide-buttons">
+                    <button class="btn btn-primary" data-page="complaint">File a Complaint</button>
+                    <button class="btn btn-outline-light" data-page="about-intro">Know Your Rights</button>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="scroll-text bg-green">
+                    <span>Advocating for Justice - Fighting against human rights violations across the nation</span>
+                </div>
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1.jpg" alt="Advocating for Justice">
+                <div class="slide-buttons">
+                    <button class="btn btn-primary" data-page="complaint">File a Complaint</button>
+                    <button class="btn btn-outline-light" data-page="about-intro">Know Your Rights</button>
+                </div>
+            </div>
+            <button class="arrow left" onclick="prevSlide()">❮</button>
+            <button class="arrow right" onclick="nextSlide()">❯</button>
+        </div>
+
+        <!-- Quick Links -->
+        <section class="quick-links">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-6">
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon"><i class="fas fa-file-alt"></i></div>
+                            <h5>Lodge Complaint</h5>
+                            <p>File human rights violation complaint online</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon"><i class="fas fa-search"></i></div>
+                            <h5>Track Status</h5>
+                            <p>Check your complaint status</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon"><i class="fas fa-book"></i></div>
+                            <h5>Acts & Rules</h5>
+                            <p>Access human rights laws and regulations</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon"><i class="fas fa-download"></i></div>
+                            <h5>Downloads</h5>
+                            <p>Forms and publications from IHRCI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <section class="mb-5">
+                        <h2 class="section-title">About IHRCI of INDIA</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Introduction & History</h4>
+                                <p>The International Human Rights Commission of India (IHRCI) was established to protect, promote, and uphold human rights across India.</p>
+                                <button class="btn btn-primary" data-page="about-intro">Read More</button>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>What We Do</h4>
+                                <ul>
+                                    <li>Investigate human rights violations</li>
+                                    <li>Intervene in legal proceedings</li>
+                                    <li>Review constitutional safeguards</li>
+                                    <li>Promote human rights awareness</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Support Our Cause</h5>
+                            <p>Your contribution helps IHRCI fight for human rights</p>
+                            <button class="btn btn-primary">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Pages (Simplified for example) -->
+    <div id="about-intro-page" class="page-content">
+        <div class="container">
+            <h2 class="section-title">Introduction & History</h2>
+            <p>IHRCI is an autonomous body committed to safeguarding human rights throughout India.</p>
+            <button class="btn btn-secondary" data-page="home">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="gallery-page" class="page-content">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/5-3.jpg" class="img-fluid" alt="Gallery Image">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/4-3.jpg" class="img-fluid" alt="Gallery Image">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-4.jpg" class="img-fluid" alt="Gallery Image">
+                </div>
+            </div>
+            <button class="btn btn-secondary" data-page="home">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="complaint-page" class="page-content">
+        <div class="container">
+            <h2 class="section-title">File a Complaint</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p>File your human rights violation complaint with IHRCI.</p>
+                    <a href="https://www.ihrci.in/complaint" target="_blank" class="btn btn-primary">File Complaint Online</a>
+                </div>
+            </div>
+            <button class="btn btn-secondary mt-3" data-page="home">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="contact-us-page" class="page-content">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Head Office - Delhi</h5>
+                            <p>U-158, VATS COMPLEX, UPADYAY BLOCK, SHANKARPUR, DELHI-110092</p>
+                            <p><i class="fas fa-phone"></i> +91-9441383889</p>
+                            <p><i class="fas fa-envelope"></i> ihrciofindia@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Hyderabad Office</h5>
+                            <p>8-3-958, Yellareddyguda, Srinagar Colony Main Road, Ameerpet, Hyderabad-500073</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-secondary mt-3" data-page="home">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>IHRCI of INDIA</h5>
+                    <p>Working towards a India where human rights are respected and protected for all.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p>&copy; 2025 IHRCI of INDIA. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Page Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page switching
+            document.querySelectorAll('[data-page]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Hide all pages
+                    document.querySelectorAll('.page-content').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show target page
+                    const targetElement = document.getElementById(targetPage + '-page');
+                    if (targetElement) {
+                        targetElement.classList.add('active');
+                    }
+                    
+                    window.scrollTo(0, 0);
+                });
+            });
+        });
+
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            let next = currentSlide + 1;
+            if (next >= slides.length) next = 0;
+            showSlide(next);
+        }
+        
+        function prevSlide() {
+            let prev = currentSlide - 1;
+            if (prev < 0) prev = slides.length - 1;
+            showSlide(prev);
+        }
+        
+        // Auto slide
+        setInterval(nextSlide, 5000);
+        
+        // Video dropdown
+        function toggleVideoDropdown() {
+            const dropdown = document.getElementById('videoDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.news-wrapper')) {
+                document.getElementById('videoDropdown').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
