@@ -1,0 +1,2961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IHRCI of INDIA - International Human Rights Commission of India</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --nhrc-blue: #1565C0;
+            --nhrc-light-blue: #E3F2FD;
+            --nhrc-dark: #0D47A1;
+            --nhrc-accent: #FF8F00;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        .top-header {
+            background-color: var(--nhrc-blue);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-header a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            height: 70px;
+        }
+        
+        .right-logo {
+            height: 70px;
+        }
+        
+        .org-name {
+            color: var(--nhrc-blue);
+            font-weight: 700;
+            font-size: 22px;
+            margin: 0;
+        }
+        
+        .org-tagline {
+            color: var(--nhrc-dark);
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .navbar {
+            background-color: var(--nhrc-dark);
+            padding: 0;
+        }
+        
+        .navbar .nav-link {
+            color: white !important;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar .nav-link:hover {
+            background-color: var(--nhrc-blue);
+        }
+        
+        .dropdown-menu {
+            background-color: var(--nhrc-dark);
+            border: none;
+            border-radius: 0;
+        }
+        
+        .dropdown-item {
+            color: white;
+            padding: 10px 20px;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--nhrc-blue);
+            color: white;
+        }
+        
+        .hero-slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .quick-links {
+            background-color: var(--nhrc-light-blue);
+            padding: 20px 0;
+        }
+        
+        .quick-link-item {
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .quick-link-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quick-link-icon {
+            font-size: 2.5rem;
+            color: var(--nhrc-blue);
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            color: var(--nhrc-dark);
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--nhrc-accent);
+            display: inline-block;
+        }
+        
+        .news-card {
+            border-left: 4px solid var(--nhrc-blue);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .complaint-box {
+            background-color: var(--nhrc-light-blue);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .language-tabs .nav-link {
+            color: var(--nhrc-dark);
+        }
+        
+        .language-tabs .nav-link.active {
+            background-color: var(--nhrc-blue);
+            color: white;
+        }
+        
+        .gallery-item {
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .gallery-item img {
+            transition: transform 0.5s;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        
+        .video-item {
+            margin-bottom: 30px;
+        }
+        
+        .video-item video {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-caption {
+            background-color: var(--nhrc-light-blue);
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            margin-top: -5px;
+        }
+        
+        .state-list {
+            column-count: 3;
+            column-gap: 20px;
+        }
+        
+        .state-list li {
+            margin-bottom: 10px;
+            break-inside: avoid;
+        }
+        
+        .page-content {
+            display: none;
+            padding: 30px 0;
+            min-height: 500px;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        .chairperson-card {
+            transition: transform 0.3s;
+        }
+        
+        .chairperson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background-color: var(--nhrc-dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--nhrc-accent);
+        }
+        
+        .complaint-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pdf-download {
+            border-left: 4px solid var(--nhrc-accent);
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header Styling */
+        .main-header {
+            background: #fff;
+            border-bottom: 3px solid #0D47A1;
+            padding: 10px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo, .right-logo, .news-logo {
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover, .right-logo:hover, .news-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .org-text {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .org-name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0D47A1;
+            margin: 0;
+        }
+
+        .org-tagline {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 5px 0 0 0;
+        }
+
+        /* Dropdown Styling */
+        .news-wrapper {
+            position: relative;
+        }
+
+        .video-dropdown {
+            display: none;
+            position: absolute;
+            top: 105%; /* just below logo */
+            right: 0;
+            background: white;
+            border: 2px solid red; /* red border for dropdown */
+            border-radius: 8px;
+            min-width: 320px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        .video-option {
+            display: block;
+            color: black;
+            font-weight: 500;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .video-option:hover {
+            background: red;
+            color: white;
+            transform: scale(1.02);
+        }
+        
+        /* Hero Slider Styles */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            position: relative;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .scroll-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 5px 0; /* reduced padding */
+            font-size: 1rem; /* reduced text size */
+            font-weight: 600;
+            color: white;
+            z-index: 5;
+        }
+
+        .scroll-text span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 8s linear forwards;
+        }
+
+        .bg-orange { background-color: rgba(255, 165, 0, 0.85); } /* transparent orange */
+        .bg-green  { background-color: rgba(0, 128, 0, 0.85); }  /* transparent green */
+        .bg-red    { background-color: rgba(255, 0, 0, 0.85); }  /* transparent red */
+
+        @keyframes scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .slide-buttons {
+            text-align: center;
+            margin: 10px 0 20px; /* slightly closer to bottom */
+        }
+
+        .slide-buttons .btn {
+            margin: 0 5px;
+            font-size: 0.9rem; /* slightly smaller buttons */
+        }
+
+        /* Arrows */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+        .arrow:hover {
+            background-color: rgba(0,0,0,0.7);
+        }
+        .arrow.left {
+            left: 10px;
+        }
+        .arrow.right {
+            right: 10px;
+        }
+        
+        /* Navbar divider lines */
+        .navbar-nav .nav-item {
+            position: relative;
+        }
+
+        .navbar-nav .nav-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background-color: red; /* vertical line */
+        }
+
+        .navbar-nav .nav-link {
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: orange !important;
+        }
+        
+        /* Certificate badge */
+        .certificate-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--nhrc-accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        /* News page styles */
+        h2, h3, .card-title, .card-header, .card-body h5 {
+            color: #003366 !important;
+        }
+
+        .card-header, .badge {
+            background-color: transparent !important;
+            color: #003366 !important;
+        }
+
+        /* Mobile Menu Fixes */
+        .navbar-toggler {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 1200px) {
+            .org-name {
+                font-size: 1.8rem;
+            }
+            
+            .org-tagline {
+                font-size: 1rem;
+            }
+            
+            .logo, .right-logo, .news-logo {
+                height: 80px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .org-text {
+                order: 3;
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .logo, .right-logo, .news-logo {
+                height: 70px;
+            }
+            
+            .navbar-nav .nav-item:not(:last-child)::after {
+                display: none;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 10px 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .dropdown-menu {
+                background-color: var(--nhrc-blue);
+                margin-left: 15px;
+            }
+            
+            .state-list {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-header {
+                font-size: 12px;
+            }
+            
+            .top-header a {
+                margin-right: 10px;
+            }
+            
+            .logo, .right-logo, .news-logo {
+                height: 60px;
+            }
+            
+            .org-name {
+                font-size: 1.5rem;
+            }
+            
+            .org-tagline {
+                font-size: 0.9rem;
+            }
+            
+            .hero-slider {
+                height: 350px;
+            }
+            
+            .slide img {
+                height: 350px;
+            }
+            
+            .scroll-text {
+                font-size: 0.9rem;
+            }
+            
+            .state-list {
+                column-count: 1;
+            }
+            
+            .gallery-item img {
+                height: 200px;
+            }
+            
+            footer {
+                padding: 30px 0 15px;
+            }
+            
+            .footer-links a {
+                margin-bottom: 8px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo, .right-logo, .news-logo {
+                height: 50px;
+                margin-bottom: 10px;
+            }
+            
+            .org-name {
+                font-size: 1.3rem;
+            }
+            
+            .org-tagline {
+                font-size: 0.8rem;
+            }
+            
+            .hero-slider {
+                height: 300px;
+            }
+            
+            .slide img {
+                height: 300px;
+            }
+            
+            .scroll-text {
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+            
+            .slide-buttons .btn {
+                font-size: 0.8rem;
+                padding: 5px 10px;
+            }
+            
+            .quick-link-icon {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .complaint-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <a href="tel:+91 9441383889"><i class="fas fa-phone-alt me-1"></i> Helpline: +91-9441383889</a>
+                    <a href="mailto:ihrciofindia@gmail.com"><i class="fas fa-envelope me-1"></i> ihrciofindia@gmail.com</a>
+                </div>
+                <div>
+                    <a href="#"><i class="fas fa-search me-1"></i> Search</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <!-- Left Logo -->
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-2.jpg" alt="IHRCI Logo" class="logo">
+
+                <!-- Center Text -->
+                <div class="org-text">
+                    <h1 class="org-name">IHRCI of INDIA</h1>
+                    <p class="org-tagline">
+                        International Human Rights Commission of India - Protecting Dignity, Promoting Rights
+                    </p>
+                </div>
+
+                <!-- Right Logos -->
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/2-2.jpg" alt="IHRCI Secondary Logo" class="right-logo">
+
+                <!-- News Logo with Dropdown -->
+                <div class="news-wrapper">
+                    <img 
+                        src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/logo-ihrci.png" 
+                        alt="News Logo" 
+                        class="news-logo"
+                        onclick="toggleVideoDropdown()"
+                        title="Click to watch IHRCI Videos">
+
+                    <!-- Dropdown for Video Links -->
+                    <div id="videoDropdown" class="video-dropdown">
+                        <a href="https://www.youtube.com/watch?v=NRpbrwmagGM" target="_blank" class="video-option">
+                            Megha Medical Camp, organized by IHRCI team
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=qjjQzf8ezBo" target="_blank" class="video-option">
+                            IHRCI team participated in Independence Day celebrations
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=7OLvIhxhwic" target="_blank" class="video-option">
+                            IHRCI National Joint Secretary Purushottam Reddy distributed clay Vinayaka idols
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=VNc1uTNp2pE" target="_blank" class="video-option">
+                            I am ready to do my part to help fluoride victims
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navbar Menu --> 
+    <nav class="navbar navbar-expand-lg" style="background-color:#0D47A1;">
+        <div class="container-fluid">
+            <!-- Mobile menu toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Collapse -->
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav" style="white-space: nowrap; width: 100%; justify-content: flex-start;">
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-2" href="#" data-page="home">
+                            <i class="fas fa-home me-1"></i> Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-2" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-info-circle me-1"></i> About Us
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="#" data-page="about-intro">Introduction & History</a></li>
+                            <li><a class="dropdown-item" href="#" data-page="about-functions">Functions & Powers</a></li>
+                            <li><a class="dropdown-item" href="#" data-page="about-structure">Organizational Structure</a></li>
+                            <li><a class="dropdown-item" href="#" data-page="about-chairpersons">Former Chairpersons</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-2" href="#" data-page="human-rights">
+                            <i class="fas fa-handshake me-1"></i> Human Rights
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-2" href="#" data-page="gallery">
+                            <i class="fas fa-image me-1"></i> Gallery
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-2" href="#" data-page="videos">
+                            <i class="fas fa-video me-1"></i> Videos
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-2" href="#" id="committeeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-users me-1"></i> Committee
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="committeeDropdown">
+                            <li><a class="dropdown-item" href="#" data-page="committee-national">National Committee</a></li>
+                            <li><a class="dropdown-item" href="#" data-page="committee-state">State Committees</a></li>
+                            <li><a class="dropdown-item" href="#" data-page="committee-district">District Committees</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-2" href="#" data-page="daily-news">
+                            <i class="fas fa-newspaper me-1"></i> Daily News
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-2" href="#" data-page="acts-rules">
+                            <i class="fas fa-gavel me-1"></i> Acts & Rules
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-2" href="#" data-page="complaint">
+                            <i class="fas fa-file-alt me-1"></i> Complaint
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-2" href="#" data-page="contact-us">
+                            <i class="fas fa-envelope me-1"></i> Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page Content -->
+    <div id="home-page" class="page-content active">
+        <!-- Hero Slider -->
+        <div id="hero-slider" class="hero-slider">
+            <!-- Slides -->
+            <div class="slide active">
+                <div class="scroll-text bg-orange">
+                    <span>Protecting Human Rights in India - Ensuring dignity, equality, and justice for all citizens</span>
+                </div>
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/4-4.jpg" alt="Protecting Human Rights">
+                <div class="slide-buttons">
+                    <a href="#" class="btn btn-primary" data-page="complaint">File a Complaint</a>
+                    <a href="#" class="btn btn-outline-primary" data-page="human-rights">Know Your Rights</a>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="scroll-text bg-green">
+                    <span>Advocating for Justice - Fighting against human rights violations across the nation</span>
+                </div>
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1.jpg" alt="Advocating for Justice">
+                <div class="slide-buttons">
+                    <a href="#" class="btn btn-primary" data-page="complaint">File a Complaint</a>
+                    <a href="#" class="btn btn-outline-primary" data-page="human-rights">Know Your Rights</a>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="scroll-text bg-red">
+                    <span>Empowering Communities - Educating citizens about their rights and responsibilities</span>
+                </div>
+                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IMAGES-IHRC-13.jpg" alt="Empowering Communities">
+                <div class="slide-buttons">
+                    <a href="#" class="btn btn-primary" data-page="complaint">File a Complaint</a>
+                    <a href="#" class="btn btn-outline-primary" data-page="human-rights">Know Your Rights</a>
+                </div>
+            </div>
+
+            <!-- Arrows -->
+            <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+            <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <!-- Quick Links -->
+        <section class="quick-links">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-6">
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h4>Lodge Complaint</h4>
+                            <p>File a human rights violation complaint online with IHRCI</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h4>Track Status</h4>
+                            <p>Check your complaint status with your IHRCI reference number</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h4>Acts & Rules</h4>
+                            <p>Access Indian human rights laws and regulations</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <h4>Downloads</h4>
+                            <p>Forms, publications, and annual reports from IHRCI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="container my-5">
+            <div class="row">
+                <!-- Left Content -->
+                <div class="col-lg-8">
+                    <!-- About IHRCI -->
+                    <section class="mb-5">
+                        <h2 class="section-title">About IHRCI of INDIA</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Introduction & History</h3>
+                                <p>The International Human Rights Commission of India (IHRCI) was established to protect, promote, and uphold human rights across India. It functions as an independent body committed to ensuring the dignity, equality, and fundamental rights of every individual.</p>
+                                <p>The Commission is composed of a Chairperson and members who are experts and advocates in the field of human rights.</p>
+                                <a href="#" class="btn btn-primary" data-page="about-intro">Read More</a>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>What We Do</h3>
+                                <ul>
+                                    <li>Investigate human rights violations</li>
+                                    <li>Intervene in legal proceedings concerning human rights issues</li>
+                                    <li>Review and recommend improvements to constitutional and legal safeguards</li>
+                                    <li>Conduct research in the field of human rights</li>
+                                    <li>Promote human rights awareness and literacy among citizens</li>
+                                </ul>
+                                <div class="mt-3">
+                                    <a href="#" class="btn btn-outline-primary me-2" data-page="about-functions">Our Functions</a>
+                                    <a href="#" class="btn btn-outline-primary" data-page="committee-state">State Committees</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Complaint Section -->
+                    <section class="mb-5">
+                        <h2 class="section-title">Lodge a Complaint</h2>
+                        <div class="complaint-box">
+                            <h3 class="mb-4">File Your Grievance Online</h3>
+                            <p>If you or someone you know is a victim of human rights violations, you can file a complaint with IHRCI. Our team works tirelessly to ensure justice and protection of your rights.</P>
+
+<P>Complaints can also be filed through the National Human Rights Commission portal: nhrc.nic.in</p>
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <div class="d-grid">
+                                        <a href="#" class="btn btn-primary btn-lg" data-page="complaint"><i class="fas fa-pencil-alt me-2"></i> File a Complaint</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-grid">
+                                        <a href="https://www.hrcnet.nic.in/HRCNet/public/SearchComplaint.aspx" class="btn btn-outline-primary btn-lg"><i class="fas fa-search me-2"></i> Track Complaint Status</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <p>You can also file complaints through the National Human Rights Commission portal: <a href="https://nhrc.nic.in" target="_blank">nhrc.nic.in</a></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- News Section -->
+                    <section class="mb-5">
+                        <h2 class="section-title">Daily News & Updates</h2>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card news-card h-100">
+                                    <div class="card-body">
+                                        <span class="badge bg-primary mb-2">Press Release</span>
+                                        <h5 class="card-title">Commission takes suo motu cognizance of media report</h5>
+                                        <p class="card-text">IHRCI has taken suo motu cognizance of a media report regarding a human rights issue in India.</p>
+                                        <p class="text-muted"><small><i class="fas fa-calendar me-1"></i> September 5, 2023</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card news-card h-100">
+                                    <div class="card-body">
+                                        <span class="badge bg-success mb-2">Update</span>
+                                        <h5 class="card-title">IHRCI organizes workshop on human rights</h5>
+                                        <p class="card-text">A one-day workshop on “Human Rights of Senior Citizens” was conducted by the Commission to raise awareness and educate participants.</p>
+                                        <p class="text-muted"><small><i class="fas fa-calendar me-1"></i> September 3, 2023</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-outline-primary" data-page="daily-news">View All News</a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Acts & Rules -->
+                    <section class="mb-5">
+                        <h2 class="section-title">Acts & Rules</h2>
+                        <ul class="nav nav-tabs language-tabs" id="actsTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="english-tab" data-bs-toggle="tab" data-bs-target="#english">English</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="telugu-tab" data-bs-toggle="tab" data-bs-target="#telugu">తెలుగు</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-3 border border-top-0" id="actsTabsContent">
+                            <div class="tab-pane fade show active" id="english">
+                                <h5>Human Rights Protection Act</h5>
+                                <p>An Act to provide for the constitution of the National Human Rights Commission, State Human Rights Commissions, and related mechanisms to safeguard human rights effectively.</p>
+                                
+                            </div>
+                            <div class="tab-pane fade" id="telugu">
+                                <h5>మానవ హక్కుల సంరక్షణ చట్టం</h5>
+                                <p>మానవ హక్కులను బెటర్ గా రక్షించడం కోసం జాతీయ మానవ హక్కుల కమిషన్, రాష్ట్ర మానవ హక్కుల కమిషన్లు ఏర్పాటు కోసం ఒక చట్టం.</p>
+                                
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Committee -->
+                    <section class="mb-5">
+                        <h2 class="section-title">Committee</h2>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action" data-page="committee-national">
+                                <i class="fas fa-flag me-2"></i> National Human Rights Committee
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-page="committee-state">
+                                <i class="fas fa-map-marker-alt me-2"></i> State Committees
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-page="committee-district">
+                                <i class="fas fa-building me-2"></i> District Committees
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Donation -->
+                    <section class="mb-5">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Support Our Cause</h5>
+                                <p class="card-text">Your contribution helps IHRCI fight for human rights and support victims of violations</p>
+                                <a href="#" class="btn btn-primary">Donate Now</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Social Media -->
+                    <section class="mb-5">
+                        <h2 class="section-title">Connect With Us</h2>
+                        <div class="d-flex justify-content-around">
+                            <a href="#" class="btn btn-danger"><i class="fab fa-youtube me-1"></i> YouTube</a>
+                            <a href="#" class="btn btn-primary"><i class="fab fa-twitter me-1"></i> Twitter</a>
+                            <a href="#" class="btn btn-info"><i class="fab fa-facebook me-1"></i> Facebook</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- About Introduction Page -->
+<div id="about-intro-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">Introduction & History</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>About International Human Rights Commission of India</h3>
+                <p>The International Human Rights Commission of India (IHRCI) is an autonomous body committed to safeguarding human rights throughout India. It works independently to uphold human dignity, equality, and the fundamental freedoms of all citizens.</p>
+                <p>Constituted under the Protection of Human Rights Act, 1993, IHRCI collaborates with government institutions, civil society, and communities to address violations of human rights and create widespread awareness.</p>
+
+                <h4>Our Mission</h4>
+                <p>Our mission is to foster a culture of human rights in India by:<br>
+                - Educating citizens about their rights<br>
+                - Investigating human rights violations<br>
+                - Advocating for justice and policy reforms<br>
+                - Supporting victims of human rights abuses</p>
+                <p>Through this mission, IHRCI ensures that all individuals enjoy rights enshrined in the Constitution of India and international human rights standards.</p>
+
+                <h4>Our Vision</h4>
+                <p>A society where:<br>
+                - Every individual enjoys fundamental rights without discrimination<br>
+                - Human dignity is respected and promoted<br>
+                - Human rights principles are integrated into governance and society</p>
+
+                <h4>Historical Background</h4>
+                <p>IHRCI was established on October 12, 1993, following the Protection of Human Rights Ordinance of September 28, 1993, later formalized by Parliament. Headquartered in New Delhi, IHRCI serves as the central authority for human rights advocacy and intervention in India.</p>
+
+                <h4>Composition</h4>
+                <p>The Commission consists of:</p>
+                <ul>
+                    <li>A Chairperson, usually a retired Chief Justice of the Supreme Court</li>
+                    <li>One member who is or has been a Judge of the Supreme Court</li>
+                    <li>One member who is or has been the Chief Justice of a High Court</li>
+                    <li>Two members appointed from persons with knowledge or practical experience in human rights</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Quick Facts</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Established:</strong> October 12, 1993</p>
+                        <p><strong>Headquarters:</strong> New Delhi</p>
+                        <p><strong>Jurisdiction:</strong> Government of India</p>
+                        <p><strong>Chairperson:</strong> Justice Arun Kumar Mishra (Retd.)</p>
+                        <p><strong>Legal basis:</strong> Protection of Human Rights Act, 1993</p>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Related Documents</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="pdf-download">
+                            <h6>IHRCI Brochure</h6>
+                            <p>Learn more about our work and initiatives</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Download PDF</a>
+                        </div>
+                        <div class="pdf-download">
+                            <h6>Annual Report 2022-2023</h6>
+                            <p>Comprehensive overview of IHRCI activities</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Functions & Powers Page -->
+<div id="about-functions-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">Functions & Powers</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Functions of IHRCI</h3>
+                <p>IHRCI performs the following key functions:</p>
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Investigation</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Investigate complaints of human rights violations, either suo-motu or through petitions submitted by victims or representatives.</p>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Intervention</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Intervene in legal proceedings involving alleged human rights violations, with court approval.</p>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Review & Research</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Review existing laws, recommend improvements, and conduct research to strengthen human rights protections.</p>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Education & Awareness</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Promote human rights literacy, organize seminars, and collaborate with NGOs and communities to raise awareness.</p>
+                    </div>
+                </div>
+                <h4 class="mt-4">Powers of IHRCI</h4>
+                <ul>
+                    <li>Regulate its own procedures</li>
+                    <li>Summon and examine witnesses on oath</li>
+                    <li>Requisition documents and public records</li>
+                    <li>Recommend action against violators</li>
+                    <li>Approach courts for necessary directions</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">About IHRCI</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="pdf-download">
+                            <h6>Mission & Work</h6>
+                            <p>IHRCI promotes justice, equality, and protection of human rights for all citizens.</p>
+                        </div>
+                        <div class="pdf-download">
+                            <h6>Human Rights</h6>
+                            <p>Human rights are fundamental freedoms and dignity entitled to every individual, regardless of background or belief.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Us - Organizational Structure Page -->
+<div id="about-structure-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">Organizational Structure</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Composition of IHRCI</h3>
+                <p>IHRCI consists of a Chairperson and eight other members. The Chairperson is usually a retired Chief Justice of India. Other members include:</p>
+                <ul>
+                    <li>One Member who is or has been a Judge of the Supreme Court of India</li>
+                    <li>One Member who is or has been the Chief Justice of a High Court</li>
+                    <li>Two Members with knowledge or practical experience in human rights</li>
+                    <li>Seven ex-officio members assisting in various functions</li>
+                </ul>
+
+                <h3>Administrative Structure</h3>
+                <p>Headquartered in New Delhi, IHRCI can establish regional offices across India. Its administrative structure includes:</p>
+                <ul>
+                    <li><strong>Chairperson:</strong> Head of the Commission responsible for overall functioning</li>
+                    <li><strong>Members:</strong> Full-time members participating in decision-making</li>
+                    <li><strong>Secretary-General:</strong> Chief executive officer managing day-to-day administration</li>
+                    <li><strong>Directors:</strong> Heads of divisions such as Investigation, Law, Research, Administration</li>
+                    <li><strong>Investigative Staff:</strong> Officers conducting inquiries into complaints</li>
+                    <li><strong>Research Division:</strong> Conducts human rights research and analysis</li>
+                    <li><strong>Law Division:</strong> Provides legal support and advice</li>
+                </ul>
+
+                <h3>Regional Offices</h3>
+                <p>IHRCI has regional offices to efficiently handle complaints, investigations, and awareness programs:</p>
+                <ul class="state-list">
+                    <li>Guwahati (North-Eastern Region)</li>
+                    <li>Kolkata (Eastern Region)</li>
+                    <li>Mumbai (Western Region)</li>
+                    <li>Chennai (Southern Region)</li>
+                    <li>Hyderabad (South-Central Region)</li>
+                    <li>Chandigarh (Northern Region)</li>
+                    <li>Bhopal (Central Region)</li>
+                </ul>
+
+                <h3>Specialized Divisions</h3>
+                <ul>
+                    <li><strong>Women's Rights Division:</strong> Focus on gender equality and women's rights</li>
+                    <li><strong>Child Rights Division:</strong> Protection of children and their rights</li>
+                    <li><strong>Dalit Rights Division:</strong> Address issues of Scheduled Castes and prevent atrocities</li>
+                    <li><strong>Tribal Rights Division:</strong> Safeguard Scheduled Tribes and forest dwellers</li>
+                    <li><strong>Disability Rights Division:</strong> Protect rights of persons with disabilities</li>
+                    <li><strong>Minority Rights Division:</strong> Focus on religious and linguistic minority rights</li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Paper News</h5>
+                        <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IMAGES-IHRC-4.jpg" class="img-fluid mb-3" alt="IHRCI Organizational Structure">
+                        <p>The Commission follows a hierarchical structure with clear responsibilities to ensure efficient functioning.</p>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Leadership</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Chairperson:</strong> Justice A.S. Anand (Retd.)</li>
+                            <li class="list-group-item"><strong>Member:</strong> Justice G.B. Pattanaik (Retd.)</li>
+                            <li class="list-group-item"><strong>Member:</strong> Dr. Shankar Sen</li>
+                            <li class="list-group-item"><strong>Member:</strong> Smt. P.C. Sharma</li>
+                            <li class="list-group-item"><strong>Secretary-General:</strong> Shri B.K. Prasad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Us - Former Chairpersons Page -->
+<div id="about-chairpersons-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">Former Chairpersons</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead">IHRCI has been guided by visionary leaders who played a pivotal role in shaping its mission and impact. Each Chairperson contributed to strengthening human rights protection and awareness in India.</p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="card chairperson-card h-100">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IMAGESIHRC-1.jpg" class="card-img-top" alt="Founding Leadership">
+                    <div class="card-body">
+                        <h5 class="card-title">Founding Leadership</h5>
+                        <p class="card-text">Pioneering leaders established IHRCI's credibility and working methodology for protecting human rights across India.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card chairperson-card h-100">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IMAGES-IHRC-2.jpg" class="card-img-top" alt="Strengthening Justice">
+                    <div class="card-body">
+                        <h5 class="card-title">Strengthening Justice</h5>
+                        <p class="card-text">Focused on enhancing legal frameworks, investigation mechanisms, and the authority of IHRCI.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card chairperson-card h-100">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IMAGES-IHRC-8.jpg" class="card-img-top" alt="Human Rights Expansion">
+                    <div class="card-body">
+                        <h5 class="card-title">Human Rights Expansion</h5>
+                        <p class="card-text">Expanded IHRCI's work in custodial justice, gender rights, and anti-discrimination initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-4 mb-4">
+                <div class="card chairperson-card h-100">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IMAGES-IHRC-11.jpg" class="card-img-top" alt="Reform Era">
+                    <div class="card-body">
+                        <h5 class="card-title">Reform Era</h5>
+                        <p class="card-text">Focused on prison reforms, protecting vulnerable sections, and strengthening institutional mechanisms.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card chairperson-card h-100">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IMAGES-IHRC-12.jpg" class="card-img-top" alt="Outreach & Awareness">
+                    <div class="card-body">
+                        <h5 class="card-title">Outreach & Awareness</h5>
+                        <p class="card-text">Emphasized public awareness campaigns, access to justice, and spreading human rights literacy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card chairperson-card h-100">
+                    <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IMAGES-IHRC-13.jpg" class="card-img-top" alt="Inclusive Growth">
+                    <div class="card-body">
+                        <h5 class="card-title">Inclusive Growth</h5>
+                        <p class="card-text">Focused on disability rights, prevention of human trafficking, and strengthening child protection systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h3>Contributions and Legacy</h3>
+                <p>Each leadership phase contributed to IHRCI’s development, shaping human rights protections from prison reforms and custodial justice to gender equality and child protection. Their legacy continues to inspire the current Commission and staff.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Human Rights Page -->
+<div id="human-rights-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">Human Rights</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>What are Human Rights?</h3>
+                <p>Human rights are inherent to every human being, regardless of race, sex, nationality, ethnicity, language, religion, or any other status. They include the right to life and liberty, freedom from slavery and torture, freedom of opinion and expression, the right to work and education, and many others. All individuals are entitled to these rights without discrimination.</p>
+
+                <h3>International Human Rights Law</h3>
+                <p>International human rights law defines the obligations of governments to respect, protect, and fulfill human rights and fundamental freedoms. The foundation of this law lies in the Charter of the United Nations and the Universal Declaration of Human Rights, adopted in 1948. Over time, specific standards have been established for women, children, persons with disabilities, minorities, and other vulnerable groups to protect them from discrimination and abuse.</p>
+
+                <h3>Human Rights in India</h3>
+                <p>The Constitution of India guarantees fundamental rights including freedom of religion, speech and expression, assembly, movement, occupation, and equality before law. It also safeguards certain rights of minorities and protects against exploitation. The Indian judiciary has played a proactive role in ensuring these rights through landmark judgments and public interest litigation.</p>
+
+                <h3>Types of Human Rights</h3>
+
+                <h4>Civil and Political Rights</h4>
+                <ul>
+                    <li>Right to life and liberty</li>
+                    <li>Freedom from torture and inhuman treatment</li>
+                    <li>Freedom from slavery and forced labor</li>
+                    <li>Right to recognition as a person before the law</li>
+                    <li>Right to equality before the law</li>
+                    <li>Right to effective remedy for violations</li>
+                    <li>Freedom from arbitrary arrest and detention</li>
+                    <li>Right to fair and public hearing</li>
+                    <li>Freedom of thought, conscience, and religion</li>
+                    <li>Freedom of opinion and expression</li>
+                    <li>Freedom of assembly and association</li>
+                </ul>
+
+                <h4>Economic, Social and Cultural Rights</h4>
+                <ul>
+                    <li>Right to work under just conditions</li>
+                    <li>Right to form and join trade unions</li>
+                    <li>Right to social security</li>
+                    <li>Right to family protection</li>
+                    <li>Right to an adequate standard of living</li>
+                    <li>Right to health care</li>
+                    <li>Right to education</li>
+                    <li>Right to participate in cultural life</li>
+                </ul>
+
+                <h3>Human Rights Violations</h3>
+                <p>Violations occur when state or non-state actors abuse, deny, or neglect basic human rights. Examples include discrimination, torture, slavery, arbitrary detention, denial of fair trials, and infringement of freedoms of expression, religion, and assembly.</p>
+
+                <h3>Role of IHRCI in Protecting Human Rights</h3>
+                <p>The International Human Rights Commission of India (IHRCI) plays a central role in the promotion and protection of human rights. Its responsibilities include:</p>
+                <ul>
+                    <li>Investigating complaints of human rights violations</li>
+                    <li>Intervening in legal proceedings involving human rights</li>
+                    <li>Reviewing constitutional and legal safeguards</li>
+                    <li>Conducting research and studies on human rights issues</li>
+                    <li>Spreading human rights literacy through outreach and education</li>
+                    <li>Supporting the efforts of NGOs and civil society working in the field of human rights</li>
+                </ul>
+                <p>IHRCI has the powers of a civil court to provide relief to victims, including monetary compensation, and can recommend prosecution of violators. The Commission can also approach the Supreme Court or High Courts for directions, orders, or writs to enforce human rights protection.</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Know Your Rights</h5>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">Right to Equality</a>
+                            <a href="#" class="list-group-item list-group-item-action">Right to Freedom</a>
+                            <a href="#" class="list-group-item list-group-item-action">Right against Exploitation</a>
+                            <a href="#" class="list-group-item list-group-item-action">Right to Freedom of Religion</a>
+                            <a href="#" class="list-group-item list-group-item-action">Cultural and Educational Rights</a>
+                            <a href="#" class="list-group-item list-group-item-action">Right to Constitutional Remedies</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Important Documents</h5>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">Universal Declaration of Human Rights</a>
+                            <a href="#" class="list-group-item list-group-item-action">International Covenant on Civil and Political Rights</a>
+                            <a href="#" class="list-group-item list-group-item-action">International Covenant on Economic, Social and Cultural Rights</a>
+                            <a href="#" class="list-group-item list-group-item-action">Convention against Torture</a>
+                            <a href="#" class="list-group-item list-group-item-action">Convention on the Rights of the Child</a>
+                            <a href="#" class="list-group-item list-group-item-action">Convention on Elimination of Discrimination against Women</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Report Violation</h5>
+                        <p>If you believe your human rights have been violated, you can file a complaint with IHRCI.</p>
+                        <a href="#" class="btn btn-primary" data-page="complaint">File a Complaint</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- Gallery Page -->
+<div id="gallery-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">Our Gallery</h2>
+
+        <ul class="nav nav-tabs mb-4" id="galleryTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="delhi-kashmir-tab" data-bs-toggle="tab" data-bs-target="#delhi-kashmir" type="button">
+                    <i class="fas fa-map-marker-alt me-2"></i>New Delhi & Jammu & Kashmir
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="images-tab" data-bs-toggle="tab" data-bs-target="#images" type="button">
+                    <i class="fas fa-image me-2"></i>Images
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="certificates-tab" data-bs-toggle="tab" data-bs-target="#certificates" type="button">
+                    <i class="fas fa-certificate me-2"></i>Certificates
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="galleryTabsContent">
+
+            <!-- New Delhi & Jammu & Kashmir Tab -->
+            <div class="tab-pane fade show active" id="delhi-kashmir">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/5-3.jpg" class="img-fluid" alt="Voter Awareness New Delhi">
+                            <div class="gallery-caption">Voter Awareness Program in New Delhi</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/4-3.jpg" class="img-fluid" alt="Free Medicine Supply">
+                            <div class="gallery-caption">Free Medicine Supply to the Covid Patient</div>
+                        </div>
+                    </div>
+                   <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-4.jpg" class="img-fluid" alt="Award Ceremony">
+                                <div class="gallery-caption">Voter Awareness Program in New Delhi</div>
+                            </div>
+                        </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/3-3.jpg" class="img-fluid" alt="Wheel Bike Distribution">
+                            <div class="gallery-caption">Distribution of Wheel bike</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/6-2.jpg" class="img-fluid" alt="Voter Awareness Jammu & Kashmir">
+                            <div class="gallery-caption">Voter Awareness Program in Jammu and Kashmir</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/5-2.jpg" class="img-fluid" alt="Voter Awareness Jammu & Kashmir">
+                            <div class="gallery-caption">Voter Awareness Program in Jammu and Kashmir</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Images Tab -->
+            <div class="tab-pane fade" id="images">
+                <div class="row">
+                    <!-- All other images excluding above -->
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/4-4.jpg" class="img-fluid" alt="IHRCI Conference">
+                            <div class="gallery-caption">National Human Rights Conference</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/3-5.jpg" class="img-fluid" alt="Human Rights Workshop">
+                            <div class="gallery-caption">National Human Rights Commission Member Discussion with Ms. Vijaya Bharathi Madam</div>
+                        </div>
+                    </div>
+                  <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/2-7.jpg" class="img-fluid" alt="Awareness Campaign">
+                                <div class="gallery-caption">Press Meet IHRCI Team</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-7.jpg" class="img-fluid" alt="Children's Rights Event">
+                                <div class="gallery-caption">IHRCI Team With TGHRC Chairman</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/3-4.jpg" class="img-fluid" alt="Legal Aid Camp">
+                                <div class="gallery-caption">Free Mineral Water Distribution to Policemen to Covid Time</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/2-6.jpg" class="img-fluid" alt="Women's Rights Conference">
+                                <div class="gallery-caption">Free Mineral Water Distribution to Policemen to Covid Time</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-6.jpg" class="img-fluid" alt="Prison Visit">
+                                <div class="gallery-caption">Free Mineral Water Distribution to Policemen to Covid Time</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-5.jpg" class="img-fluid" alt="Human Rights Day">
+                                <div class="gallery-caption">Human Rights Day Celebration at IHRCI</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/6-3.jpg" class="img-fluid" alt="International Delegation">
+                                <div class="gallery-caption">Meeting with National Human Rights Delegation</div>
+                            </div>
+                        </div>
+                       <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/3-2.jpg" class="img-fluid" alt="Legal Workshop">
+                                <div class="gallery-caption">Free Health Campaign by IHRCI Team to Villages</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/2-3.jpg" class="img-fluid" alt="Refugee Rights">
+                                <div class="gallery-caption">I went to visit and console the mother of the brave soldier Murali Naik after his death</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-3.jpg" class="img-fluid" alt="Gender Equality">
+                                <div class="gallery-caption">National Seminar</div>
+                            </div>
+                        </div>                 
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/15.jpg" class="img-fluid" alt="Senior Citizens Rights">
+                                <div class="gallery-caption">Workshop on Rights of Senior Citizens</div>
+                            </div>
+                        </div>
+                       <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/8.jpg" class="img-fluid" alt="Disaster Management">
+                                <div class="gallery-caption">Plastic Removal at Beaches for Environmental Protection by IHRCI team</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/7-1.jpg" class="img-fluid" alt="Legal Awareness">
+                                <div class="gallery-caption">Martial arts Sports meet</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                           <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/6-1.jpg" class="img-fluid" alt="Women Empowerment">
+                                <div class="gallery-caption">Women Empowerment and Rights Conference</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/5-1.jpg" class="img-fluid" alt="Consumer Rights">
+                                <div class="gallery-caption">Free Clay Ganesh Idols Distribution</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/4-1.jpg" class="img-fluid" alt="Prisoner Rights">
+                                <div class="gallery-caption">Seminar on Prisoner Rights and Reform</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1-1.jpg" class="img-fluid" alt="Right to Information">
+                                <div class="gallery-caption">Human Rights Children Awareness Program</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/6.jpg" class="img-fluid" alt="Water Rights">
+                                <div class="gallery-caption">Children Awareness Program</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/5.jpg" class="img-fluid" alt="Housing Rights">
+                                <div class="gallery-caption">Free Mineral Water Distribution to Government Hospital to Covid Patients</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/4.jpg" class="img-fluid" alt="Food Security">
+                                <div class="gallery-caption">Free Mineral Water Distribution to Government Hospital to Covid Patients</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/3.jpg" class="img-fluid" alt="Climate Justice">
+                                <div class="gallery-caption">Martial Arts Sports Meeting</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/2.jpg" class="img-fluid" alt="Peace Education">
+                                <div class="gallery-caption">Martial Arts Sports Meeting</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item position-relative">
+                                <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/1.jpg" class="img-fluid" alt="International Day">
+                                <div class="gallery-caption">Martial Arts Sports Meeting</div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+
+            <!-- Certificates Tab -->
+            <div class="tab-pane fade" id="certificates">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <span class="certificate-badge">Certificate</span>
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/14.jpg" class="img-fluid" alt="Labor Rights">
+                            <div class="gallery-caption">Anti-Littering Pledge</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <span class="certificate-badge">Certificate</span>
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/13.jpg" class="img-fluid" alt="Digital Rights">
+                            <div class="gallery-caption">Women Rights Pledge</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <span class="certificate-badge">Certificate</span>
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/12.jpg" class="img-fluid" alt="Health Rights">
+                            <div class="gallery-caption">Human Rights Pledge</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <span class="certificate-badge">Certificate</span>
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/11.jpg" class="img-fluid" alt="Education Rights">
+                            <div class="gallery-caption">Right to Education Pledge</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item position-relative">
+                            <span class="certificate-badge">Certificate</span>
+                            <img src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/10.jpg" class="img-fluid" alt="Minority Rights">
+                            <div class="gallery-caption">TB Free India Pledge</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- CSS to make images fully visible -->
+<style>
+.gallery-item img {
+    object-fit: contain; /* ensures image fully visible without cutting */
+    width: 100%;
+    height: 250px; /* adjust height as needed */
+}
+.certificate-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #f39c12;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+</style>
+
+<!-- Videos Page --><div id="videos-page" class="page-content"> 
+    <div class="container">
+        <h2 class="section-title">Videos</h2>
+        <p class="text-center lead">Highlights from our events, campaigns, and news coverage.</p>
+        <div class="row">
+            <!-- Existing YouTube videos -->
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/NRpbrwmagGM" title="Megha Medical Camp, organized by IHRCI team" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">
+                    <h6>Megha Medical Camp, organized by IHRCI team</h6>
+                </div>
+            </div>
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/qjjQzf8ezBo" title="IHRCI team participated in Independence Day celebrations" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">
+                    <h6>IHRCI team participated in Independence Day celebrations</h6>
+                </div>
+            </div>
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/7OLvIhxhwic" title="IHRCI National Joint Secretary Purushottam Reddy distributed clay Vinayaka idols" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">
+                    <h6>IHRCI National Joint Secretary Purushottam Reddy distributed clay Vinayaka idols</h6>
+                </div>
+            </div>
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/VNc1uTNp2pE" title="I am ready to do my part to help fluoride victims" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">
+                    <h6>I am ready to do my part to help fluoride victims</h6>
+                </div>
+            </div>
+
+            <!-- New MP4 videos with your provided titles -->
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.30.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Plastic Removal at Beaches for Environmental Protection by IHRCI team</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.30-1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Workshop on Child Rights Protection</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.29.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Panel Discussion on Women's Rights</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.29-1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Human Rights Training for Police Personnel</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.28.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Public Hearing on Environmental Rights</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.27.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Seminar on Digital Rights and Privacy</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.28-1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Awareness Campaign on Right to Education</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.27-2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Conference on Disability Rights</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.27-1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Workshop on Prisoner Rights and Reform</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.26.mp4m" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Legal Aid Camp in Rural Area</h6>
+                </div>
+            </div>
+
+            <div class="col-md-6 video-item">
+                <div class="ratio ratio-16x9">
+                    <video controls>
+                        <source src="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/WhatsApp-Video-2025-09-08-at-12.31.24-1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">
+                    <h6>Human Rights Day Celebration 2022</h6>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Committee - National Page -->
+<div id="committee-national-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">National Committee</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Composition of the National Human Rights Committee</h3>
+                <p>The National Human Rights Committee is composed of a Chairperson and eight other members. The composition is as follows:</p>
+                
+                <ul>
+                    <li>A Chairperson who has been a Chief Justice of India</li>
+                    <li>One member who is, or has been, a Judge of the Supreme Court</li>
+                    <li>One member who is, or has been, the Chief Justice of a High Court</li>
+                    <li>Two members to be appointed from among persons having knowledge of, or practical experience in, matters relating to human rights</li>
+                    <li>In addition, the Chairpersons of the National Commission for Minorities, the National Commission for Women, the National Commission for Scheduled Castes, and the National Commission for Scheduled Tribes are ex-officio members</li>
+                </ul>
+              <!-- Image above Current Members with no extra spacing -->
+<div style="text-align:center; margin:0; padding:0;">
+    <img src="https://papayawhip-giraffe-202554.hostingersite.com/wp-content/uploads/2025/10/National-Commitee.jpg" 
+         alt="National Committee" 
+         style="max-width:100%; height:auto; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.15); display:block; margin:0 auto; padding:0;">
+</div>
+                <!-- 🔹 End image -->
+
+                <h3>Current Members</h3>
+                <p>The current National Human Rights Committee consists of the following distinguished members:</p>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Background</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Justice Arun Kumar Mishra</td>
+                                <td>Chairperson</td>
+                                <td>Former Judge, Supreme Court of India</td>
+                            </tr>
+                            <tr>
+                                <td>Justice M.M. Kumar</td>
+                                <td>Member</td>
+                                <td>Former Chief Justice, Jammu & Kashmir High Court</td>
+                            </tr>
+                            <tr>
+                                <td>Dr. D.M. Mulay</td>
+                                <td>Member</td>
+                                <td>Former Secretary, Ministry of External Affairs</td>
+                            </tr>
+                            <tr>
+                                <td>Ms. Jyotika Kalra</td>
+                                <td>Member</td>
+                                <td>Social Activist and Lawyer</td>
+                            </tr>
+                            <tr>
+                                <td>Dr. Vijayendra Bidari</td>
+                                <td>Member</td>
+                                <td>IAS Officer (Retired)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Functions of the National Committee</h3>
+                <p>The National Human Rights Committee performs the following functions:</p>
+                
+                <ul>
+                    <li>Inquire into complaints of violation of human rights or negligence in the prevention of such violation by a public servant</li>
+                    <li>Intervene in any proceeding involving any allegation of violation of human rights pending before a court with the approval of such court</li>
+                    <li>Visit any jail or other institution under the control of the State Government where persons are detained or lodged for purposes of treatment, reformation or protection to study the living conditions of the inmates and make recommendations thereon</li>
+                    <li>Review the safeguards provided by or under the Constitution or any law for the time being in force for the protection of human rights and recommend measures for their effective implementation</li>
+                    <li>Review the factors, including acts of terrorism, that inhibit the enjoyment of human rights and recommend appropriate remedial measures</li>
+                    <li>Study treaties and other international instruments on human rights and make recommendations for their effective implementation</li>
+                    <li>Undertake and promote research in the field of human rights</li>
+                    <li>Spread human rights literacy among various sections of society and promote awareness of the safeguards available for the protection of these rights through publications, the media, seminars and other available means</li>
+                    <li>Encourage the efforts of non-governmental organizations and institutions working in the field of human rights</li>
+                    <li>Such other functions as it may consider necessary for the promotion of human rights</li>
+                </ul>
+                
+                <h3>Powers of the National Committee</h3>
+                <p>The National Human Rights Committee has the following powers:</p>
+                
+                <ul>
+                    <li>All the powers of a civil court trying a suit under the Code of Civil Procedure, 1908</li>
+                    <li>Power to require any person to furnish information on such points or matters as in the opinion of the Commission may be useful for, or relevant to, the subject matter of the inquiry</li>
+                    <li>Power to require any person to produce any document which, in the opinion of the Commission, may be useful for, or relevant to, the subject matter of the inquiry</li>
+                    <li>Power to issue commissions for the examination of witnesses or documents</li>
+                    <li>Power to recommend to the concerned Government or authority the initiation of proceedings for prosecution or any other action against the concerned person or persons</li>
+                    <li>Power to approach the Supreme Court or the High Court concerned for such directions, orders or writs as that Court may deem necessary</li>
+                    <li>Power to recommend to the concerned Government or authority the grant of such immediate interim relief to the victim or the members of his family as the Commission may consider necessary</li>
+                </ul>
+                
+                <h3>Achievements of the National Committee</h3>
+                <p>Since its establishment, the National Human Rights Committee has made significant contributions to the protection and promotion of human rights in India. Some of its notable achievements include:</p>
+                
+                <ul>
+                    <li>Resolution of thousands of cases of human rights violations through investigation and recommendation of appropriate action</li>
+                    <li>Development of guidelines for various law enforcement agencies to prevent human rights violations</li>
+                    <li>Promotion of human rights education and awareness through various programs and publications</li>
+                    <li>Intervention in important cases of human rights violations leading to justice for victims</li>
+                    <li>Recommendations for legal and policy reforms to strengthen the protection of human rights</li>
+                    <li>Special focus on the rights of vulnerable groups including women, children, minorities, and tribal communities</li>
+                    <li>Publication of annual reports and special reports on various human rights issues</li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Quick Links</h5>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">Annual Reports</a>
+                            <a href="#" class="list-group-item list-group-item-action">Important Decisions</a>
+                            <a href="#" class="list-group-item list-group-item-action">Publications</a>
+                            <a href="#" class="list-group-item list-group-item-action">Research Papers</a>
+                            <a href="#" class="list-group-item list-group-item-action">Contact Committee Members</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Committee Meetings</h5>
+                        <p>The National Committee meets regularly to discuss important human rights issues and cases. The meeting schedule and agendas are published on the website.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Meeting Schedule</a>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Past Agendas</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">File a Complaint</h5>
+                        <p>If you want to file a complaint with the National Human Rights Committee, you can do so through our online portal.</p>
+                        <a href="#" class="btn btn-primary" data-page="complaint">File Complaint</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Committee - State Page -->
+<div id="committee-state-page" class="page-content">
+    <div class="container">
+
+        <!-- State Committee Images - Grid Style -->
+        <div class="row justify-content-center mb-4" style="margin-top: 20px;">
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="committee-img-wrapper">
+                    <img src="https://papayawhip-giraffe-202554.hostingersite.com/wp-content/uploads/2025/10/State-Commitee-Karnataka-State.jpg" alt="Karnataka State Committee" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="committee-img-wrapper">
+                    <img src="https://papayawhip-giraffe-202554.hostingersite.com/wp-content/uploads/2025/10/State-Commitee.jpg" alt="All State Committees" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="committee-img-wrapper">
+                    <img src="https://papayawhip-giraffe-202554.hostingersite.com/wp-content/uploads/2025/10/state-commiteeAndhra-Pradesh.jpg" alt="Andhra Pradesh Committee" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">State Committees</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>State Human Rights Commissions</h3>
+                <p>In addition to the National Human Rights Commission, many states in India have established their own State Human Rights Commissions to address human rights violations at the state level. These commissions function in accordance with the Protection of Human Rights Act, 1993.</p>
+                
+                <h3>Composition of State Commissions</h3>
+                <p>A State Human Rights Commission consists of:</p>
+                <ul>
+                    <li>A Chairperson who has been a Chief Justice of a High Court</li>
+                    <li>One Member who is, or has been, a Judge of a High Court</li>
+                    <li>One Member who is, or has been, a District Judge in that state</li>
+                    <li>Two members to be appointed from among persons having knowledge of, or practical experience in, matters relating to human rights</li>
+                </ul>
+                
+                <h3>Functions of State Commissions</h3>
+                <p>The State Human Rights Commissions perform the following functions within their respective states:</p>
+                <ul>
+                    <li>Inquire into complaints of violation of human rights or negligence in the prevention of such violation by a public servant</li>
+                    <li>Intervene in any proceeding involving any allegation of violation of human rights pending before a court with the approval of such court</li>
+                    <li>Visit any jail or other institution under the control of the State Government where persons are detained or lodged for purposes of treatment, reformation or protection to study the living conditions of the inmates and make recommendations thereon</li>
+                    <li>Review the safeguards provided by or under the Constitution or any law for the time being in force for the protection of human rights and recommend measures for their effective implementation</li>
+                    <li>Review the factors, including acts of terrorism, that inhibit the enjoyment of human rights and recommend appropriate remedial measures</li>
+                    <li>Undertake and promote research in the field of human rights</li>
+                    <li>Spread human rights literacy among various sections of society and promote awareness of the safeguards available for the protection of these rights through publications, the media, seminars and other available means</li>
+                    <li>Encourage the efforts of non-governmental organizations and institutions working in the field of human rights</li>
+                </ul>
+                
+                <h3>List of State Human Rights Commissions</h3>
+                <p>As of now, the following states have established State Human Rights Commissions:</p>
+                <ul class="state-list">
+                    <li>Andhra Pradesh</li>
+                    <li>Assam</li>
+                    <li>Bihar</li>
+                    <li>Chhattisgarh</li>
+                    <li>Gujarat</li>
+                    <li>Goa</li>
+                    <li>Haryana</li>
+                    <li>Himachal Pradesh</li>
+                    <li>Jammu and Kashmir</li>
+                    <li>Jharkhand</li>
+                    <li>Karnataka</li>
+                    <li>Kerala</li>
+                    <li>Madhya Pradesh</li>
+                    <li>Maharashtra</li>
+                    <li>Manipur</li>
+                    <li>Meghalaya</li>
+                    <li>Mizoram</li>
+                    <li>Odisha</li>
+                    <li>Punjab</li>
+                    <li>Rajasthan</li>
+                    <li>Sikkim</li>
+                    <li>Tamil Nadu</li>
+                    <li>Telangana</li>
+                    <li>Tripura</li>
+                    <li>Uttar Pradesh</li>
+                    <li>Uttarakhand</li>
+                    <li>West Bengal</li>
+                </ul>
+                
+                <h3>Cooperation between National and State Commissions</h3>
+                <p>The National Human Rights Commission and the State Human Rights Commissions work in close cooperation to ensure effective protection of human rights across India. The National Commission may advise the State Commissions and coordinate their functions.</p>
+                
+                <p>In cases where a State Commission is unable to function effectively due to various reasons, the National Commission may take up the matters that would normally fall within the jurisdiction of the State Commission.</p>
+                
+                <h3>Achievements of State Commissions</h3>
+                <p>State Human Rights Commissions have played a crucial role in addressing human rights violations at the state level. Some of their achievements include:</p>
+                <ul>
+                    <li>Resolution of numerous cases of human rights violations within their respective states</li>
+                    <li>Development of state-specific guidelines for law enforcement agencies</li>
+                    <li>Promotion of human rights awareness through state-level programs</li>
+                    <li>Special focus on issues particularly relevant to their states</li>
+                    <li>Recommendations for state-level legal and policy reforms</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">About the State Committee</h5>
+                        <p>Works to uphold human rights initiatives within the state.
+
+Coordinates with district committees to ensure effective implementation of programs.
+
+Provides guidance and support for awareness campaigns on human rights issues.</p>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Roles & Responsibilities</h5>
+                        <p>Monitor human rights conditions and report violations promptly.
+
+Advise the state government on policy measures related to human rights.
+
+Facilitate training and workshops for law enforcement and civil society.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Members & Contact</h5>
+                        <p>Comprises experienced professionals, social activists, and legal experts.
+Meets regularly to review ongoing cases and recommend actions.
+
+Contact details available for citizens to report concerns or seek guidance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Committee - District Page -->
+<div id="committee-district-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">District Committees</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>District Committees of IHRCI</h3>
+                <p>To protect human rights at the grassroots level, IHRCI has established District Committees in various districts across India, operating under their respective State Committees.</p>
+                
+                <h3>Composition of District Committees</h3>
+                <p>Each District Committee consists of:</p>
+                
+                <ul>
+                    <li>Chairperson: Usually a retired District Judge or senior social activist</li>
+                    <li>Members: Representatives from law, education, social work, and medicine</li>
+                    <li>Government Representatives: District-level officers</li>
+                    <li>Civil Society Representatives: NGO members working in the district</li>
+                </ul>
+                
+                <h3>Functions of District Committees</h3>
+                <p>District Committees of IHRCI perform:</p>
+                
+                <ul>
+                    <li>Receive and investigate complaints of human rights violations</li>
+                    <li>Mediate minor issues locally</li>
+                    <li>Refer serious cases to the State Committee</li>
+                    <li>Create awareness at the grassroots level</li>
+                    <li>Organize workshops, seminars, and training</li>
+                    <li>Monitor district human rights conditions</li>
+                    <li>Submit reports to the State Committee</li>
+                </ul>
+                
+                <h3>Importance and Challenges</h3>
+                <p>District Committees bring protection closer to communities but face challenges like limited resources, political interference, and remote outreach. Despite this, they have successfully resolved land disputes, addressed discrimination, promoted education, and ensured healthcare access.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">About the District Committee</h5>
+                        <p>Serves as the local arm of IHRCI to protect human rights. Works closely with the state committee and engages communities to promote awareness and resolve issues.</p>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Resources for District Committees</h5>
+                        <p>Investigate complaints, organize awareness programs, collaborate with authorities, and ensure justice within the district.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Members & Contact</h5>
+                        <p>Includes district officials, legal experts, and social activists. Periodically reviews cases and provides accessible channels for citizens.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Daily News Page -->
+<div id="daily-news-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title text-center mb-4" style="color: #003366;">Daily News</h2>
+        <div class="row">
+
+            <!-- Main News Content -->
+            <div class="col-md-8">
+
+                <!-- All News Items -->
+                <div class="news-page">
+                    <div class="card mb-4 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #003366;">IHRCI Launches Nationwide Voter Awareness Campaign</h3>
+                            <p class="card-text">The International Human Rights Commission of India (IHRCI) has launched a voter awareness campaign across multiple states to educate citizens on their voting rights and responsibilities.</p>
+                            <div class="extra-content d-none">
+                                <p>The campaign includes workshops in schools, colleges, and local communities to promote democratic participation and strengthen civic engagement.</p>
+                            </div>
+                            <p class="text-muted"><small><i class="fas fa-calendar me-1"></i> September 20, 2025</small></p>
+                            <a href="#" class="btn btn-sm btn-outline-primary read-more">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #003366;">Free Medical Camps Organized by IHRCI for Rural Communities</h3>
+                            <p class="card-text">IHRCI conducted free medical camps in rural areas, providing essential healthcare services and medicines to underserved populations.</p>
+                            <div class="extra-content d-none">
+                                <p>These camps are part of IHRCI's ongoing initiative to ensure the right to health for all citizens and raise awareness about preventive healthcare practices.</p>
+                            </div>
+                            <p class="text-muted"><small><i class="fas fa-calendar me-1"></i> September 15, 2025</small></p>
+                            <a href="#" class="btn btn-sm btn-outline-primary read-more">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #003366;">IHRCI Holds Workshop on Child Rights Protection</h3>
+                            <p class="card-text">IHRCI organized a two-day workshop focusing on child rights protection, engaging social workers, educators, and government officials.</p>
+                            <div class="extra-content d-none">
+                                <p>The workshop covered child labor prevention, education rights, and protection mechanisms for children in vulnerable situations, highlighting IHRCI’s commitment to safeguarding children's rights.</p>
+                            </div>
+                            <p class="text-muted"><small><i class="fas fa-calendar me-1"></i> September 10, 2025</small></p>
+                            <a href="#" class="btn btn-sm btn-outline-primary read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+
+                <!-- Categories -->
+                <div class="card mb-4 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #003366;">News Categories</h5>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">Press Releases</a>
+                            <a href="#" class="list-group-item list-group-item-action">Advisories</a>
+                            <a href="#" class="list-group-item list-group-item-action">Reports</a>
+                            <a href="#" class="list-group-item list-group-item-action">Case Updates</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Reports & Publications -->
+                <div class="card mb-4 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #003366;">Recent Reports & Publications</h5>
+                        <p>Access the latest reports, research papers, and case updates published by IHRCI.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#" target="_blank">Annual Human Rights Report 2025</a></li>
+                            <li class="list-group-item"><a href="#" target="_blank">Study on Rural Health & Welfare Programs</a></li>
+                            <li class="list-group-item"><a href="#" target="_blank">Advisory on Child Rights Protection</a></li>
+                            <li class="list-group-item"><a href="#" target="_blank">Press Release: Voter Awareness Campaign</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Subscribe -->
+                <div class="card mb-4 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #003366;">Subscribe to News Updates</h5>
+                        <p>Get the latest news from IHRCI directly in your inbox.</p>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Media Contact -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #003366;">Media Contact</h5>
+                        <p><strong>Shri Rajesh Kumar</strong><br>
+                            Media Relations Officer<br>
+                            Phone: +91 9441383889<br> 
+                            Email: media@ihrci.org</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Acts & Rules Page -->
+<div id="acts-rules-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">Acts & Rules</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Legal Framework for Human Rights Protection in India</h3>
+                <p>The International Human Rights Commission of India (IHRCI) works within India's legal framework to protect and promote human rights. This framework includes the Constitution of India, central and state laws, and international conventions ratified by India. IHRCI ensures these laws are implemented effectively across various sectors of society.</p>
+
+                <h3>Constitutional Provisions</h3>
+                <p>IHRCI closely monitors the following constitutional provisions that safeguard human rights:</p>
+                <ul>
+                    <li><strong>Fundamental Rights (Part III):</strong> Rights such as equality, freedom, protection against exploitation, freedom of religion, cultural and educational rights, and remedies for violations.</li>
+                    <li><strong>Directive Principles of State Policy (Part IV):</strong> Guidelines for the state to ensure social, economic, and political justice for all citizens.</li>
+                    <li><strong>Fundamental Duties (Part IV-A):</strong> Duties of citizens to promote harmony, respect for human rights, and the spirit of common brotherhood.</li>
+                </ul>
+
+                <h3>Key Laws for Human Rights Protection</h3>
+                <p>IHRCI monitors and promotes the implementation of major human rights laws in India, such as:</p>
+                
+                <div class="accordion mb-4" id="actsAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                Protection of Human Rights Act, 1993
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#actsAccordion">
+                            <div class="accordion-body">
+                                <p>The principal legislation for human rights in India, providing for the National and State Human Rights Commissions and Human Rights Courts. IHRCI supports its implementation by providing research, awareness programs, and recommendations to strengthen human rights enforcement.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#actsAccordion">
+                            <div class="accordion-body">
+                                <p>This Act prevents atrocities against members of Scheduled Castes and Tribes. IHRCI conducts monitoring, victim support, and awareness campaigns to ensure proper implementation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                Right to Information Act, 2005
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#actsAccordion">
+                            <div class="accordion-body">
+                                <p>IHRCI promotes transparency and accountability by helping citizens access information under this Act and by conducting workshops to educate the public about their rights to information.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                Rights of Persons with Disabilities Act, 2016
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#actsAccordion">
+                            <div class="accordion-body">
+                                <p>IHRCI works to protect the rights of persons with disabilities, ensuring equality, dignity, and access to education, employment, and social security.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                Juvenile Justice (Care and Protection of Children) Act, 2015
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#actsAccordion">
+                            <div class="accordion-body">
+                                <p>IHRCI supports the protection, rehabilitation, and development of children in conflict with law or in need of care. Programs include legal aid, counseling, and advocacy for child rights.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>International Conventions</h3>
+                <p>IHRCI actively promotes compliance with international human rights treaties ratified by India, including:</p>
+                <ul>
+                    <li>International Covenant on Civil and Political Rights</li>
+                    <li>International Covenant on Economic, Social and Cultural Rights</li>
+                    <li>Convention on the Elimination of All Forms of Discrimination against Women</li>
+                    <li>Convention on the Rights of the Child</li>
+                    <li>Convention against Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment</li>
+                    <li>International Convention on the Elimination of All Forms of Racial Discrimination</li>
+                    <li>Convention on the Rights of Persons with Disabilities</li>
+                </ul>
+
+                <h3>IHRCI's Role in Legal Implementation</h3>
+                <p>The International Human Rights Commission of India plays a critical role in enforcing human rights laws by:</p>
+                <ul>
+                    <li>Reviewing constitutional and legal safeguards for human rights</li>
+                    <li>Recommending measures for effective law enforcement</li>
+                    <li>Monitoring compliance with international treaties</li>
+                    <li>Conducting research, awareness programs, and capacity-building workshops</li>
+                    <li>Promoting human rights education among citizens, NGOs, and government bodies</li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Download Acts & Rules</h5>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">Protection of Human Rights Act, 1993</a>
+                            <a href="#" class="list-group-item list-group-item-action">Rules under the Protection of Human Rights Act</a>
+                            <a href="#" class="list-group-item list-group-item-action">Related Laws</a>
+                            <a href="#" class="list-group-item list-group-item-action">International Conventions</a>
+                            <a href="#" class="list-group-item list-group-item-action">Model Forms</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Important Judgments</h5>
+                        <p>Landmark judgments related to human rights:</p>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">Supreme Court Judgments</a>
+                            <a href="#" class="list-group-item list-group-item-action">High Court Judgments</a>
+                            <a href="#" class="list-group-item list-group-item-action">IHRCI Recommendations</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Legal Assistance</h5>
+                        <p>If you require legal support for human rights violations, contact:</p>
+                        <p><strong>Legal Aid Cell</strong><br>
+                        International Human Rights Commission of India (IHRCI)<br>
+                        Phone: +91-9441383889<br>
+                        Email: ihrciofindia@gmail.com</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">More Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Us Page -->
+<div id="contact-us-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        
+        <section class="py-5" style="background:#f9f9f9;">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 style="color:#333;">Contact Us</h2>
+                    <p style="font-size:1.1rem; color:#555;">Reach out to us for inquiries, support, or collaboration opportunities.</p>
+                    <p style="font-size:1.1rem; color:#555;">Our team is ready to assist you and guide you through our services.</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Left Side: Google Maps -->
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                            <h5 style="color:#444;">Head Office - Delhi</h5>
+                            <iframe 
+                                src="https://www.google.com/maps?q=U-158,+Vats+Complex,+Upadhyay+Block,+Shakarpur,+Delhi+110092&output=embed" 
+                                width="100%" height="250" style="border:2px solid #28a745; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div>
+                            <h5 style="color:#444;">Hyderabad Office</h5>
+                            <iframe 
+                                src="https://www.google.com/maps?q=8-3-958,+Yellareddyguda,+Srinagar+Colony+Main+Road,+Ammerpet,+Hyderabad+500073&output=embed" 
+                                width="100%" height="250" style="border:2px solid #ff6600; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Contact Form -->
+                    <div class="col-lg-6">
+                        <form id="contactForm" style="background:#fff; padding:25px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control border-success" id="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control border-info" id="email" placeholder="Enter your email" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control border-danger" id="phone" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control border-primary" id="message" rows="4" placeholder="Type your message here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-gradient w-100" style="background:linear-gradient(45deg,#28a745,#ff6600,#007bff,#dc3545); color:#fff; border:none; font-weight:bold; transition:0.3s;">Submit</button>
+                        </form>
+
+                        <div class="mt-4 p-3" style="background:#fff; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+                            <p><strong>Contact Details:</strong></p>
+                            <p>Cell: +91 9441383889, +91 9441888038</p>
+                            <p>Email: <a href="mailto:ihrciofindia@gmail.com">ihrciofindia@gmail.com</a></p>
+                            <p>Website: <a href="https://www.ihrcofindia.com" target="_blank">www.ihrcofindia.com</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PDFs Section -->
+                <div class="mt-5 text-center">
+                    <p style="font-size:1.1rem; color:#555;">Download our application forms below for easy submission.</p>
+                    <p style="font-size:1.1rem; color:#555;">Click to view, download, or print the required application forms.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IHRCI-Application-english.pdf" 
+                           target="_blank" class="btn btn-outline-success" download>Download English PDF</a>
+                        <a href="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IHRCI-Application-Telugu.pdf" 
+                           target="_blank" class="btn btn-outline-warning" download>Download Telugu PDF</a>
+                        <button onclick="window.open('https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IHRCI-Application-english.pdf','_blank').print()" class="btn btn-outline-primary">Print English PDF</button>
+                        <button onclick="window.open('https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IHRCI-Application-Telugu.pdf','_blank').print()" class="btn btn-outline-danger">Print Telugu PDF</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Complaint Page --> 
+<div id="complaint-page" class="page-content">
+    <div class="container">
+        <h2 class="section-title">IHRCI Complaint Procedure</h2>
+
+        <div class="row">
+            <!-- Left Column (Instructions & Form Sections) -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Instructions for Submitting Complaints to IHRCI</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Guidelines for Filing Complaints Online or Offline:</strong></p>
+                        <ul>
+                            <li>Ensure all details are filled accurately in <strong>English</strong>.</li>
+                            <li>Provide supporting documents wherever applicable.</li>
+                            <li>Anonymous complaints may be considered, but complete details ensure faster resolution.</li>
+                        </ul>
+
+                        <!-- Section A -->
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <h6 class="text-success">Section A: Complainant Information</h6>
+                            <ul class="list-unstyled mb-0">
+                                <li><strong>Name:</strong> Full name of the complainant.</li>
+                                <li><strong>Gender:</strong> Select from the available options.</li>
+                                <li><strong>Address:</strong> Complete correspondence address.</li>
+                                <li><strong>State & District:</strong> Select appropriate location.</li>
+                                <li><strong>PIN, Email & Phone:</strong> Provide accurate contact details.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Section B -->
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <h6 class="text-success">Section B: Victim Information</h6>
+                            <ul class="list-unstyled mb-0">
+                                <li><strong>Name & Address:</strong> Full name and complete address of the victim.</li>
+                                <li><strong>State & District:</strong> Where the victim resides.</li>
+                                <li><strong>Gender, Age & Disability:</strong> Provide accurate details.</li>
+                                <li><strong>Religion & Caste:</strong> Optional, if relevant.</li>
+                                <li><strong>Group Complaints:</strong> For multiple victims, indicate "Group".</li>
+                            </ul>
+                        </div>
+
+                        <!-- Section C -->
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <h6 class="text-success">Section C: Incident Details</h6>
+                            <ul class="list-unstyled mb-0">
+                                <li><strong>Place, State & District:</strong> Exact location of incident.</li>
+                                <li><strong>Date:</strong> DD/MM/YYYY format.</li>
+                                <li><strong>Category & Sub-Category:</strong> Choose based on the type of human rights violation.</li>
+                                <li><strong>Description:</strong> Provide detailed account of the incident.</li>
+                                <li><strong>Other Proceedings:</strong> Mention if case is already in Court or State Human Rights Commission.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Section D -->
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <h6 class="text-success">Section D: Relief & Action Sought</h6>
+                            <ul class="list-unstyled mb-0">
+                                <li><strong>Against Whom:</strong> Name, designation, and address of officials involved (if applicable).</li>
+                                <li><strong>Relief Sought:</strong> Clearly describe the remedy or action expected from IHRCI.</li>
+                            </ul>
+                        </div>
+
+                        <!-- File a Complaint Button -->
+                        <a href="https://www.ihrci.in/complaint" target="_blank" class="btn btn-lg btn-primary mt-3">
+                            File a Complaint with IHRCI
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar (Guidelines, Forms, Help) -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Complaint Guidelines</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>File complaint as soon as possible after the incident.</li>
+                            <li>Include accurate and complete information for faster processing.</li>
+                            <li>Attach supporting documents like ID proof, medical reports, or official notices.</li>
+                            <li>False or misleading complaints may attract legal consequences.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Updated Complaint Forms -->
+                <div class="card mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Download Complaint Forms</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="pdf-download mb-3">
+                            <h6>IHRCI Complaint Form - English</h6>
+                            <a href="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IHRCI-Application-english.pdf" target="_blank" class="btn btn-sm btn-outline-primary">Download PDF</a>
+                        </div>
+                        <div class="pdf-download">
+                            <h6>IHRCI Complaint Form - Telugu</h6>
+                            <a href="https://indigo-fish-959100.hostingersite.com/wp-content/uploads/2025/09/IHRCI-Application-Telugu.pdf" target="_blank" class="btn btn-sm btn-outline-primary">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Need Help?</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>For assistance with complaints, contact IHRCI:</p>
+                        <p><i class="fas fa-phone me-2"></i> +91-9441383889</p>
+                        <p><i class="fas fa-envelope me-2"></i> ihrciofindia@gmail.com</p>
+                        <p>Our team is available Monday to Saturday, 10 AM – 6 PM.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ 
+
+<!-- Responsive Styling -->
+<style>
+    @media (max-width: 992px){
+        #contact .row {
+            flex-direction: column;
+        }
+        #contact iframe {
+            height: 250px;
+        }
+    }
+    #contact form .form-control:focus {
+        box-shadow: 0 0 8px rgba(0,123,255,0.5);
+    }
+    #contact form button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    #contact a.btn:hover {
+        transform: scale(1.05);
+        opacity:0.9;
+    }
+</style>
+
+<!-- Optional JS for Form Submission -->
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+    
+    // Create email content
+    const emailBody = `Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0AMessage: ${message}`;
+    
+    // Open user's email client
+    window.location.href = `mailto:ihrciofindia@gmail.com?cc=ihrciofindia@gmail.com&subject=IHRCI Contact Form Submission&body=${emailBody}`;
+    
+    // Show success message
+    alert('Thank you! Your email client will open with the message. Please click send to submit.');
+    
+    // Reset form
+    this.reset();
+});
+</script>
+
+   
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h5>IHRCI of INDIA</h5>
+                    <p>Working towards a India where human rights are respected and protected for all.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="#" data-page="home">Home</a>
+                        <a href="#" data-page="about-intro">About Us</a>
+                        <a href="https://nhrc.nic.in" target="_blank">NHRC Portal</a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Resources</h5>
+                    <div class="footer-links">
+                        <a href="#" data-page="acts-rules">Acts & Rules</a>                       </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <p>
+                        <i class="fas fa-map-marker-alt me-2"></i> Head Office: U-158,VATS COMPLEX,<br>
+                        &nbsp; &nbsp; &nbsp; &nbsp;UPADYAY BLOCK, SHANKARPUR, DELHI-110092<br>
+                        <i class="fas fa-map-marker-alt me-2"></i> Hyderabad Head Office: 8-3-958,<br>
+                        &nbsp; &nbsp; &nbsp; &nbsp;yellareadyguda, srinagar colony main road,<br>
+                        &nbsp; &nbsp; &nbsp; &nbsp;Ameerpet, Hyderabad-500073<br>
+                        <i class="fas fa-phone-alt me-2"></i> +91-9441383889<br>
+                        <i class="fas fa-envelope me-2"></i> ihrciofindia@gmail.com<br>
+                        <i class="fas fa-globe me-2"></i> www.ihrcofindia.com
+                    </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row"> 
+                <div class="col-md-12 mb-3 text-center">
+                    <p class="mb-0">Copyright© 2025 IHRCI of INDIA. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Page navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all pages except home
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                if (page.id !== 'home-page') {
+                    page.style.display = 'none';
+                } else {
+                    page.style.display = 'block';
+                }
+            });
+            
+            // Add click event listeners to all navigation links
+            const navLinks = document.querySelectorAll('[data-page]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Hide all pages
+                    pages.forEach(page => {
+                        page.style.display = 'none';
+                    });
+                    
+                    // Show the target page
+                    const targetElement = document.getElementById(targetPage + '-page');
+                    if (targetElement) {
+                        targetElement.style.display = 'block';
+                    }
+                    
+                    // Update active navigation
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    
+                    // If it's a dropdown item, also activate the parent
+                    if (this.classList.contains('dropdown-item')) {
+                        this.closest('.dropdown').querySelector('.nav-link').classList.add('active');
+                    } else {
+                        this.classList.add('active');
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+        });
+
+        // Hero image slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slider .slide');
+        let autoSlideTimeout;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+
+            // Wait until scroll animation completes (8s) before going next
+            clearTimeout(autoSlideTimeout);
+            autoSlideTimeout = setTimeout(nextSlide, 8500);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Initialize the slider
+        if (slides.length > 0) {
+            showSlide(0);
+        }
+
+        // Video dropdown functionality
+        function toggleVideoDropdown() {
+            const dropdown = document.getElementById('videoDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('videoDropdown');
+            const newsWrapper = document.querySelector('.news-wrapper');
+            if (!newsWrapper.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Read More toggle for news
+        document.addEventListener("click", function(e) {
+            if (e.target.classList.contains("read-more")) {
+                e.preventDefault();
+                const extra = e.target.closest(".card-body").querySelector(".extra-content");
+                extra.classList.toggle("d-none");
+                e.target.textContent = extra.classList.contains("d-none") ? "Read More" : "Read Less";
+            }
+        });
+    </script>
+</body>
+</html>
